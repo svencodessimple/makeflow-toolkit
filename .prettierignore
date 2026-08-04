@@ -1,0 +1,13 @@
+# Build & Output Folders
+.next
+out
+dist
+build
+coverage
+
+# Dependencies
+node_modules
+
+# Misc
+.DS_Store
+*.log

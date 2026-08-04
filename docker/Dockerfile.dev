@@ -1,0 +1,24 @@
+FROM node:22-alpine
+
+WORKDIR /app
+
+# Corepack aktivieren, um pnpm bereitzustellen
+RUN corepack enable && corepack prepare pnpm@11 --activate
+
+# Dependency-Dateien kopieren für effizientes Caching
+COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml* ./
+
+# Entwicklungs-Dependencies installieren
+RUN pnpm install
+
+# Quellcode kopieren
+COPY . .
+
+# Port für Next.js freigeben
+EXPOSE 3000
+
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Dev-Server mit Hot-Reloading starten
+CMD ["pnpm", "dev"]
