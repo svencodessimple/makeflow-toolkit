@@ -1,12 +1,11 @@
-import FeatureBadge from "@/components/FeatureBadge";
-import HeroHeader from "@/components/HeroHeader";
-import CommandCheatSheet from "@/components/CommandCheatSheet";
+import FeatureBadge from '@/components/FeatureBadge';
+import HeroHeader from '@/components/HeroHeader';
+import CommandCheatSheet from '@/components/CommandCheatSheet';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100 flex flex-col items-center justify-center p-6 sm:p-24 antialiased">
       <div className="max-w-3xl w-full space-y-8">
-        
         <HeroHeader />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
@@ -33,7 +32,6 @@ export default function Home() {
           </code>{' '}
           to begin building your application.
         </div>
-
       </div>
     </main>
   );

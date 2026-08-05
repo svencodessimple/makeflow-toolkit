@@ -1,4 +1,4 @@
-import CommandRow from "@/components/CommandRow";
+import CommandRow from '@/components/CommandRow';
 
 export default function CommandCheatSheet() {
   return (

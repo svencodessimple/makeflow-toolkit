@@ -9,8 +9,8 @@ export default function HeroHeader() {
         Makeflow Toolkit
       </h1>
       <p className="text-lg text-slate-400 max-w-2xl">
-        Production-ready Next.js starter environment. Pre-configured with Tailwind CSS,
-        TypeScript, Docker, and modular Makefile DX automation.
+        Production-ready Next.js starter environment. Pre-configured with Tailwind CSS, TypeScript,
+        Docker, and modular Makefile DX automation.
       </p>
     </div>
   );
