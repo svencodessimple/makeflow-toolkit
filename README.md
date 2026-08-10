@@ -1,6 +1,6 @@
 # Makeflow Toolkit 🚀
 
-> A production-ready **Next.js 15 & React 19** starter kit powered by modular **Makefile** DX automation and **pnpm 10**.
+> A production-ready **Next.js 15 & React 19** starter kit powered by modular **Makefile** DX automation and **pnpm 11**.
 
 Stop wrestling with complex local setups, inconsistent package manager scripts, or messy Docker builds. **Makeflow Toolkit** provides a unified, developer-friendly command-line interface wrapped around a modern web stack.
 
@@ -28,7 +28,7 @@ Stop wrestling with complex local setups, inconsistent package manager scripts, 
 │   ├── 01-dev.mk           # Development & setup targets
 │   ├── 02-docker.mk        # Container management
 │   └── 03-quality.mk       # Linting, formatting & testing
-├── pnpm-workspace.yaml     # pnpm 10 build script permissions
+├── pnpm-workspace.yaml     # pnpm 11 build script permissions
 ├── tsconfig.json           # Modern TypeScript (ES2022) configuration
 ├── Dockerfile              # Multi-stage production build
 └── src/
