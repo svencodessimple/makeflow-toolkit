@@ -10,7 +10,7 @@ export default function Home() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
           <FeatureBadge>
-            <span className="text-emerald-400 font-bold">✓</span> Next.js 15
+            <span className="text-emerald-400 font-bold">✓</span> Next.js 16
           </FeatureBadge>
           <FeatureBadge>
             <span className="text-emerald-400 font-bold">✓</span> Tailwind CSS
