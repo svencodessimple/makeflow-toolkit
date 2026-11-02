@@ -1,26 +1,26 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "06:00"
-      timezone: "Europe/Berlin"
+      interval: 'weekly'
+      day: 'monday'
+      time: '06:00'
+      timezone: 'Europe/Berlin'
     open-pull-requests-limit: 5
-    target-branch: "main"
+    target-branch: 'main'
     labels:
-      - "dependencies"
-      - "automated pr"
+      - 'dependencies'
+      - 'automated pr'
 
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
-      time: "06:00"
-      timezone: "Europe/Berlin"
+      interval: 'weekly'
+      day: 'monday'
+      time: '06:00'
+      timezone: 'Europe/Berlin'
     open-pull-requests-limit: 5
     labels:
-      - "ci/cd"
-      - "automated pr"
+      - 'ci/cd'
+      - 'automated pr'
