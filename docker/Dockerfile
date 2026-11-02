@@ -4,7 +4,7 @@
 # ==========================================
 
 # 1. Base stage - Shared Node/Alpine setup
-FROM node:22-alpine AS base
+FROM node:22.23.4-alpine3.24@sha256:025b8e975a61d94e33abeafaad1255ef44e4898cf1a1b6446860009c72e6d284 AS base
 WORKDIR /app
 
 # Install libc6-compat for native dependency compatibility on Alpine
