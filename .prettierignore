@@ -7,7 +7,10 @@ coverage
 
 # Dependencies
 node_modules
+
+# Automatically generated files
 pnpm-lock.yaml
+next-env.d.ts
 
 # Misc
 .DS_Store
