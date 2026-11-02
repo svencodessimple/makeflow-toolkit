@@ -1,105 +1,139 @@
 # Makeflow Toolkit 🚀
 
-> A production-ready **Next.js 16 & React 19** starter kit powered by modular **Makefile** DX automation and **pnpm 11**.
+A production-ready **Next.js 16 & React 19** starter toolkit powered by modular **Makefile** automation, **Docker** and **pnpm 11**.
 
-Stop wrestling with complex local setups, inconsistent package manager scripts, or messy Docker builds. **Makeflow Toolkit** provides a unified, developer-friendly command-line interface wrapped around a modern web stack.
-
----
+Makeflow Toolkit provides a structured development environment with consistent commands, automated quality checks and containerized development and production workflows.
 
 ## ✨ Features
 
-- ⚡ **Next.js 16 & React 19** — App Router, Server Components, and optimized performance.
-- 🛠️ **DX Automation via Makefile** — Standardized, modular commands (`make setup`, `make check`, `make dev`).
-- 📦 **pnpm 11 Ready** — Pre-configured with pnpm-workspace.yaml for strict build-script permissions.
-- 🎨 **Tailwind CSS & Dark Mode** — Clean styling setup with CSS module declarations out-of-the-box.
-- 🛡️ **TypeScript (ES2022)** — Strict type safety without IDE friction or side-effect import warnings.
-- 🧪 **Testing & Quality Assurance** — Pre-configured pipeline with **Vitest**, **ESLint 9**, and **Prettier**.
-- 🐳 **Production Docker Setup** — Multi-stage builds utilizing Next.js `standalone` output.
-
----
+- ⚡ **Next.js 16 & React 19** — App Router, Server Components and optimized performance.
+- 🛠️ **Makefile DX Automation** — Standardized commands for setup, development, Docker and quality checks.
+- 📦 **pnpm 11** — Strict dependency management and build-script permissions.
+- 🎨 **Tailwind CSS 4** — Modern CSS-first configuration.
+- 🛡️ **TypeScript 6** — Strict type checking.
+- 🧪 **Quality Assurance** — Vitest, ESLint 9 and Prettier.
+- 🐳 **Docker** — Multi-stage production builds using Next.js standalone output.
 
 ## 📁 Project Structure
 
 ```text
 .
-├── Makefile                # Main Entrypoint (Includes modular scripts from make/)
-├── make/                   # Modular Makefile scripts
-│   ├── 00-config.mk        # Environment & variables
-│   ├── 01-dev.mk           # Development & setup targets
-│   ├── 02-docker.mk        # Container management
-│   └── 03-quality.mk       # Linting, formatting & testing
-├── pnpm-workspace.yaml     # pnpm 11 build script permissions
-├── tsconfig.json           # Modern TypeScript (ES2022) configuration
-├── Dockerfile              # Multi-stage production build
-└── src/
-    ├── app/                # App Router (layout, page, error handlers)
-    └── styles/             # Global Tailwind & CSS definitions
+├── docker/
+│   ├── Dockerfile
+│   ├── Dockerfile.dev
+│   ├── docker-compose.yaml
+│   └── docker-compose.dev.yaml
+├── make/
+│   ├── 00-base.mk
+│   ├── 01-dev.mk
+│   ├── 02-docker.mk
+│   └── 03-quality.mk
+├── src/
+│   ├── app/
+│   └── styles/
+├── Makefile
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+└── tsconfig.json
 ```
-
----
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-Make sure you have the following installed on your machine:
+- **Node.js:** `>=20.9.0` (Node 26 used in CI and Docker)
+- **pnpm:** `>=11.0.0`
+- **Make**
+- **Docker:** Required for containerized workflows
 
-- **Node.js**: `>= 20.0.0`
-- **pnpm**: `>= 11.0.0` (v11 fully supported)
-- **Make**: Available natively on macOS/Linux (or via WSL/Git Bash on Windows)
-
-### 1. Clone & Setup
+### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/your-username/makeflow-toolkit.git](https://github.com/your-username/makeflow-toolkit.git)
+git clone https://github.com/svencodessimple/makeflow-toolkit.git
 cd makeflow-toolkit
+```
 
-# Run system checks, copy .env, and install dependencies
+### 2. Initialize the project
+
+```bash
 make setup
 ```
 
-### 2. Start Development Server
+This checks the required system tools, copies `.env.example` to `.env` if necessary and installs dependencies.
+
+### 3. Start development
 
 ```bash
 make dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+Open [http://localhost:3000](http://localhost:3000).
 
----
+## 🛠️ Makefile Commands
 
-## 🛠️ Command Line Interface (Makefile Reference)
+| Command            | Description                                     |
+| ------------------ | ----------------------------------------------- |
+| `make help`        | Display all available commands                  |
+| `make check-deps`  | Check required system tools                     |
+| `make setup`       | Initialize environment and install dependencies |
+| `make dev`         | Start the local Next.js development server      |
+| `make build`       | Build the application locally                   |
+| `make start`       | Start the standalone production server          |
+| `make check`       | Run type-check, lint and tests                  |
+| `make lint`        | Run ESLint                                      |
+| `make format`      | Format files using Prettier                     |
+| `make type-check`  | Run TypeScript type checking                    |
+| `make test`        | Run Vitest                                      |
+| `make clean`       | Remove local build artifacts                    |
+| `make reset`       | Remove dependencies and reinstall               |
+| `make up`          | Start Docker development containers             |
+| `make up ENV=prod` | Start Docker production containers              |
+| `make down`        | Stop and remove Docker containers               |
+| `make rebuild`     | Rebuild Docker images without cache             |
+| `make logs`        | Follow container logs                           |
+| `make shell`       | Open a shell in the app container               |
+| `make status`      | Show Docker container status                    |
 
-Instead of remembering long CLI flags, use the streamlined `make` targets:
+## 🐳 Docker
 
-| Command       | Description                                                                 |
-| :------------ | :-------------------------------------------------------------------------- |
-| `make setup`  | Verifies system tools, copies environment variables, and installs packages. |
-| `make dev`    | Starts the Next.js development server with Turbopack.                       |
-| `make check`  | Runs the full quality suite: TypeScript type-check, ESLint, and Vitest.     |
-| `make format` | Formats all files across the project using Prettier.                        |
-| `make build`  | Builds the production Next.js application locally.                          |
-| `make up`     | Builds and starts the Docker container in detached mode.                    |
-| `make down`   | Stops and removes active Docker containers.                                 |
-| `make clean`  | Purges `.next`, `node_modules`, and build artifacts.                        |
-
----
-
-## 🐳 Docker Deployment
-
-To spin up a containerized production build locally:
+### Development
 
 ```bash
 make up
 ```
 
-This runs a multi-stage Docker build that isolates dependencies and leverages Next.js standalone output for minimal image size. To stop the container, run:
+Starts the development Compose configuration with source-code bind mounts and hot reloading.
+
+### Production
+
+```bash
+make up ENV=prod
+```
+
+Uses the multi-stage production Dockerfile and Next.js standalone output.
+
+Stop the containers with:
 
 ```bash
 make down
 ```
 
----
+## 🧪 Quality Checks
+
+Run the complete quality suite:
+
+```bash
+make check
+```
+
+This executes:
+
+1. TypeScript type checking
+2. ESLint
+3. Vitest
+
+The same command is used by the GitHub Actions CI workflow.
 
 ## 📄 License
 
@@ -107,6 +141,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">
-  Crafted with ❤️ by <b>SvenCodesSimple</b>
-</p>
+Crafted with ❤️ by **SvenCodesSimple**
