@@ -4,7 +4,7 @@
 # ==========================================
 
 # 1. Base stage - Shared Node/Alpine setup
-FROM node:22.23.4-alpine3.24@sha256:025b8e975a61d94e33abeafaad1255ef44e4898cf1a1b6446860009c72e6d284 AS base
+FROM node:26-alpine3.24@sha256:d431b1d60cd8de74dc66d271c236f66227998c308e011e60faa9c60dc4d37382 AS base
 WORKDIR /app
 
 # Install libc6-compat for native dependency compatibility on Alpine
@@ -13,10 +13,10 @@ RUN apk add --no-cache libc6-compat
 # CI-Modus aktivieren (verhindert ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY in pnpm 11)
 ENV CI=true
 
-# Enable Corepack and prepare pnpm 11
+# Install the pnpm version declared in package.json
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable && corepack prepare pnpm@11.18.0 --activate
+RUN npm install --global pnpm@11.18.0
 
 
 # 2. Dependencies stage - Install production & dev dependencies
